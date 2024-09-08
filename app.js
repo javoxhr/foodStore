@@ -186,3 +186,15 @@ buyNow.forEach((el, i) => {
 closeOrder.addEventListener('click', () => {
     modalBuyNow.style.display = 'none'
 })
+
+const orderInp = document.querySelector('.order-inputs')
+const orderPlacBtn = document.querySelector('.place-order-btn')
+const orderPlacCloseBtn = document.querySelector('.close-order-inpts')
+
+orderPlacBtn.addEventListener('click', ()=> {
+    orderInp.classList.add('order-inp-active')
+})
+
+orderPlacCloseBtn.addEventListener('click', ()=> {
+    orderInp.classList.remove('order-inp-active')
+})
