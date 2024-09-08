@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    padding: 30px 0;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 170px;
+    box-shadow: 1px 3px 7px rgb(192, 161, 4);
+    border-radius: 20px;
+    padding: 15px 20px 20px;
+    position: relative;
+
+    img {
+        width: 85px;
+    }
+}
+
+.image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 10px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .products {
+        gap: 15px;
+        justify-content: center;
+    }
+}
+
+.add-to-cart {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid rgb(192, 161, 4);
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.app-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 30px;
+}
+
+.top-left button {
+    padding: 5px;
+    color: #fff;
+    background: #000;
+    border-radius: 8px;
+    border: 2px solid rgb(192, 161, 4);
+    cursor: pointer;
+}
+
+.top-right button {
+    padding: 5px;
+    color: #fff;
+    background: #000;
+    border-radius: 8px;
+    border: 2px solid rgb(192, 161, 4);
+    cursor: pointer;
+}
+
+.app-title {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.item-img {
+    width: 85px;
+}
+
+.buy-now {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgb(192, 161, 4);
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.order-buy-now {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.close-order {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.order-product-img {
+    width: 80px;
+}
+
+.order-wrapper {
+    margin-top: 100px;
+    padding: 0 20px
+}
+
+.order-product {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.order-inputs {
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.order-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-inputs input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #b5b4b4;
+    background: transparent;
+    color: #fff;
+}
+
+.order-inputs form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    background: #000;
+    transition: all .3s ease;
+}
+
+.active-cart {
+    right: 0;
+}
+
+.cart-wrapper {
+    position: relative;
+}
+
+.buy-all-btn-wrp {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.buy-all-btn-wrp button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.buy-btn-wrp {
+    margin-top: 10px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#close-cart {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.cart-product-img {
+    width: 80px;
+}
+
+.cart-product-title {
+    color: red;
+}
