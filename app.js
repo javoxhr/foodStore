@@ -149,12 +149,15 @@ function closeNotiFunc() {
     window.location.reload(true)
 }
 
-closeNoti.addEventListener('click', ()=> {
+closeNoti.addEventListener('click', () => {
     closeNotiFunc()
 })
 
 let order = ""
 let quan = 1
+const totalPrice = document.querySelector('#total-price')
+const totalProduct = document.querySelector('#name-product')
+
 
 buyNow.forEach((el, i) => {
     el.addEventListener('click', () => {
@@ -168,7 +171,7 @@ buyNow.forEach((el, i) => {
                  <div class="order-text-and-btns-wrp">
                   <div class="order-product-text-wrap">
                     <span>${p.title}</span>
-                    <span>$${p.price}</span>
+                    <span>$${p.price * quan}</span>
                   </div>
                   <div class="order-product-quantity">
                    <button id="rem-quan">-</button>
@@ -178,37 +181,47 @@ buyNow.forEach((el, i) => {
                  </div>
                 </div>
                 `
+                const addQuantity = document.querySelectorAll('#add-quan')
+                const remQuantity = document.querySelectorAll('#rem-quan')
+                const quanText = document.querySelectorAll('#quan-text-content')
+
+                addQuantity.forEach((ad, adI) => {
+                    totalPrice.textContent = `Total: ${p.price * quan + '$'}`
+                    totalProduct.textContent = `${p.title}: ${quan}  шт`
+                    ad.addEventListener('click', () => {
+                        if (quan < 10) {
+                            quan++
+                            totalPrice.textContent = `Total: ${p.price * quan + '$'}`
+                            totalProduct.textContent = `${p.title}: ${quan}  шт`
+
+                        }
+                        quanText.forEach((tx, txi) => {
+                            tx.textContent = quan
+                        })
+
+                    })
+                })
+
+                remQuantity.forEach((rm, rmI) => {
+                    totalPrice.textContent = `Total: ${p.price * quan + '$'}`
+                    totalProduct.textContent = `${p.title} ${quan} шт`
+                    rm.addEventListener('click', () => {
+                        if (quan > 1) {
+                            quan--
+                            totalPrice.textContent = `Total: ${p.price * quan + '$'}`
+                            totalProduct.textContent = `${p.title}: ${quan} шт`
+
+                        }
+                        quanText.forEach((qt, qti) => {
+                            qt.textContent = quan
+                        })
+                    })
+                })
             }
         })
     })
 })
 
-const addQuantity = document.querySelectorAll('#add-quan')
-const remQuantity = document.querySelectorAll('#rem-quan')
-const quanText = document.querySelectorAll('#quan-text-content')
-
-addQuantity.forEach((ad, adI)=> {
-    ad.addEventListener('click', ()=> {
-        if(quan < 10) {
-            quan ++
-        }
-        quanText.forEach((tx, txi)=> {
-            tx.textContent = quan
-        })
-
-    })
-})
-
-remQuantity.forEach((rm, rmI)=> {
-    rm.addEventListener('click', ()=> {
-        if(quan > 0) {
-            quan --
-        }
-        quanText.forEach((qt, qti)=> {
-            qt.textContent = quan
-        })
-    })
-})
 
 sendFormTg.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -233,7 +246,7 @@ sendFormTg.addEventListener('submit', (e) => {
     message += `<b>Адрес: </b> ${address}\n`;
     message += `<b>${productTitle}</b>\n`
     message += `<b>Штук: ${quan}</b>\n`
-    message += `<b>Итого оплата: ${''} ${productPrice + '$'}</b>\n`
+    message += `<b>Итого оплата: ${''} ${productPrice * quan + '$'}</b>\n`
 
     fetch(URL_API, {
         method: "POST",
@@ -246,14 +259,14 @@ sendFormTg.addEventListener('submit', (e) => {
             parse_mode: "HTML"
         })
     })
-    .then((res)=> {
-        if(res.ok) {
-            console.log(true)
-            orderInp.classList.remove('order-inp-active')
-            modalBuyNow.style.display = 'none'
-            notiFunc()
-        }
-    })
+        .then((res) => {
+            if (res.ok) {
+                console.log(true)
+                orderInp.classList.remove('order-inp-active')
+                modalBuyNow.style.display = 'none'
+                notiFunc()
+            }
+        })
 });
 
 closeOrder.addEventListener('click', () => {

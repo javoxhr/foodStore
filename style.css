@@ -347,6 +347,23 @@ main {
     transform: translate(-50%, -50%);
 }
 
+.total-wrp {
+    border: 2px solid #b5b4b4;
+    padding: 15px;
+    border-radius: 10px;
+    background: #000;
+    position: relative;
+}
+
+#name-product {
+    padding: 5px 0;
+}
+
+.check-products {
+    font-weight: 700px;
+    font-size: 20px;
+}
+
 @keyframes noti-anim {
     from {
         transform: translate(-50%, -70%);
