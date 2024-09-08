@@ -1,36 +1,11 @@
-const userName = document.querySelector('#tg-user-name')
+let tg = window.Telegram.WebApp
 
-window.addEventListener('load', function() {
-    // Убедитесь, что Web App API загружен и доступен
-    if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
+tg.expand()
 
-        // Получение данных о пользователе
-        const user = window.Telegram.WebApp.initDataUnsafe.user;
+tg.MainButton.textColor = "#fff"
+tg.MainButton.color = "#2cab37"
 
-        // Проверка наличия данных о пользователе
-        if (user) {
-            const userName = user.username || 'No username'; // Имя пользователя (если есть)
-            const firstName = user.first_name || 'No first name'; // Имя
-            const lastName = user.last_name || 'No last name'; // Фамилия (если есть)
-            userName.textContent = firstName ? firstName : 'user-name not'
-
-            console.log('Username:', userName);
-            console.log('First Name:', firstName);
-            console.log('Last Name:', lastName);
-        } else {
-            console.log('User data is not available');
-        }
-    } else {
-        console.log('Telegram WebApp is not available');
-    }
-});
-
-
-
-
-
-
+let item = ""
 
 
 const TOKEN = "7547473380:AAHY6d_QFWqD1vMiiwoEz4ta_9GQkT1WmUc"
@@ -194,6 +169,7 @@ const totalProduct = document.querySelector('#name-product')
 
 
 buyNow.forEach((el, i) => {
+    item = el.id
     el.addEventListener('click', () => {
         modalBuyNow.style.display = 'block'
         products.forEach((p, pi) => {
@@ -322,3 +298,17 @@ orderPlacBtn.addEventListener('click', () => {
 orderPlacCloseBtn.addEventListener('click', () => {
     orderInp.classList.remove('order-inp-active')
 })
+
+
+Telegram.WebApp.onEvent("mainButtonCliked", function() {
+    tg.sendData(item)
+})
+
+let userCard = document.querySelector('.user-box')
+
+let p = document.createElement('p')
+
+p.innerText = `${tg.initDataUnsafe.first_name}
+${tg.initDataUnsafe.last_name}`
+
+userCard.appendChild(p)
