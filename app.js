@@ -146,6 +146,7 @@ function closeNotiFunc() {
     successNotiOverlay.style.display = 'none'
     notiSuccess.style.display = 'none'
     body.style.overflow = 'auto'
+    window.location.reload(true)
 }
 
 closeNoti.addEventListener('click', ()=> {
