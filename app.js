@@ -154,13 +154,13 @@ closeNoti.addEventListener('click', ()=> {
 })
 
 let order = ""
+let quan = 1
 
 buyNow.forEach((el, i) => {
     el.addEventListener('click', () => {
         modalBuyNow.style.display = 'block'
         products.forEach((p, pi) => {
             if (pi == i) {
-                let quan = 1
                 order = p
                 orderWrp.innerHTML = `
                 <div class="order-product">
@@ -178,83 +178,83 @@ buyNow.forEach((el, i) => {
                  </div>
                 </div>
                 `
-                const addQuantity = document.querySelectorAll('#add-quan')
-                const remQuantity = document.querySelectorAll('#rem-quan')
-                const quanText = document.querySelectorAll('#quan-text-content')
-
-                addQuantity.forEach((ad, adI)=> {
-                    ad.addEventListener('click', ()=> {
-                        if(quan < 10) {
-                            quan ++
-                        }
-                        quanText.forEach((tx, txi)=> {
-                            tx.textContent = quan
-                        })
-
-                    })
-                })
-
-                remQuantity.forEach((rm, rmI)=> {
-                    rm.addEventListener('click', ()=> {
-                        if(quan > 0) {
-                            quan --
-                        }
-                        quanText.forEach((qt, qti)=> {
-                            qt.textContent = quan
-                        })
-                    })
-                })
-
-                sendFormTg.addEventListener('submit', (e) => {
-                    e.preventDefault();
-
-                    const productTitle = p.title
-                    const productPrice = p.price
-
-                    const form = e.target;
-
-                    const name = form.querySelector('[name="name"]').value;
-                    const tel = form.querySelector('[name="tel"]').value;
-                    const address = form.querySelector('[name="address"]').value;
-
-                    if (!name || !tel || !address) {
-                        alert('Пожалуйста, заполните все поля.');
-                        return;
-                    }
-
-                    let message = `<b>Новый заказ 🚚</b>\n`;
-                    message += `<b>Имя покупателя: </b> ${name}\n`;
-                    message += `<b>Телефон: </b> ${tel}\n`;
-                    message += `<b>Адрес: </b> ${address}\n`;
-                    message += `<b>${productTitle}</b>\n`
-                    message += `<b>Штук: ${quan}</b>\n`
-                    message += `<b>Итого оплата: ${''} ${productPrice + '$'}</b>\n`
-
-                    fetch(URL_API, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            chat_id: CHANNELID,
-                            text: message,
-                            parse_mode: "HTML"
-                        })
-                    })
-                    .then((res)=> {
-                        if(res.ok) {
-                            console.log(true)
-                            orderInp.classList.remove('order-inp-active')
-                            modalBuyNow.style.display = 'none'
-                            notiFunc()
-                        }
-                    })
-                });
-
             }
         })
     })
 })
+
+const addQuantity = document.querySelectorAll('#add-quan')
+const remQuantity = document.querySelectorAll('#rem-quan')
+const quanText = document.querySelectorAll('#quan-text-content')
+
+addQuantity.forEach((ad, adI)=> {
+    ad.addEventListener('click', ()=> {
+        if(quan < 10) {
+            quan ++
+        }
+        quanText.forEach((tx, txi)=> {
+            tx.textContent = quan
+        })
+
+    })
+})
+
+remQuantity.forEach((rm, rmI)=> {
+    rm.addEventListener('click', ()=> {
+        if(quan > 0) {
+            quan --
+        }
+        quanText.forEach((qt, qti)=> {
+            qt.textContent = quan
+        })
+    })
+})
+
+sendFormTg.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const productTitle = order.title
+    const productPrice = order.price
+
+    const form = e.target;
+
+    const name = form.querySelector('[name="name"]').value;
+    const tel = form.querySelector('[name="tel"]').value;
+    const address = form.querySelector('[name="address"]').value;
+
+    if (!name || !tel || !address) {
+        alert('Пожалуйста, заполните все поля.');
+        return;
+    }
+
+    let message = `<b>Новый заказ 🚚</b>\n`;
+    message += `<b>Имя покупателя: </b> ${name}\n`;
+    message += `<b>Телефон: </b> ${tel}\n`;
+    message += `<b>Адрес: </b> ${address}\n`;
+    message += `<b>${productTitle}</b>\n`
+    message += `<b>Штук: ${quan}</b>\n`
+    message += `<b>Итого оплата: ${''} ${productPrice + '$'}</b>\n`
+
+    fetch(URL_API, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            chat_id: CHANNELID,
+            text: message,
+            parse_mode: "HTML"
+        })
+    })
+    .then((res)=> {
+        if(res.ok) {
+            console.log(true)
+            orderInp.classList.remove('order-inp-active')
+            modalBuyNow.style.display = 'none'
+            notiFunc()
+        }
+    })
+});
 
 closeOrder.addEventListener('click', () => {
     modalBuyNow.style.display = 'none'
