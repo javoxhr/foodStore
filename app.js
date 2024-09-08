@@ -16,6 +16,10 @@ cartOpen.addEventListener('click', () => cart.classList.add('active-cart'))
 
 cartClose.addEventListener('click', () => cart.classList.remove('active-cart'))
 
+const orderInp = document.querySelector('.order-inputs')
+const orderPlacBtn = document.querySelector('.place-order-btn')
+const orderPlacCloseBtn = document.querySelector('.close-order-inpts')
+
 const products = [
     {
         title: 'GamBurger',
@@ -186,10 +190,6 @@ buyNow.forEach((el, i) => {
 closeOrder.addEventListener('click', () => {
     modalBuyNow.style.display = 'none'
 })
-
-const orderInp = document.querySelector('.order-inputs')
-const orderPlacBtn = document.querySelector('.place-order-btn')
-const orderPlacCloseBtn = document.querySelector('.close-order-inpts')
 
 orderPlacBtn.addEventListener('click', ()=> {
     orderInp.classList.add('order-inp-active')
