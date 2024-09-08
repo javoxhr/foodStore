@@ -130,6 +130,28 @@ const telInp = document.querySelector('tel')
 const nmInp = document.querySelector('name')
 const adlInp = document.querySelector('adress')
 
+
+const successNotiOverlay = document.querySelector('.success-noti-overlay')
+const notiSuccess = document.querySelector('.success-noti')
+const closeNoti = document.querySelector('.close-delivery-btn')
+const body = document.querySelector('body')
+
+function notiFunc() {
+    successNotiOverlay.style.display = 'block'
+    notiSuccess.style.display = 'flex'
+    body.style.overflow = 'hidden'
+}
+
+function closeNotiFunc() {
+    successNotiOverlay.style.display = 'none'
+    notiSuccess.style.display = 'none'
+    body.style.overflow = 'auto'
+}
+
+closeNoti.addEventListener('click', ()=> {
+    closeNotiFunc()
+})
+
 let order = ""
 
 buyNow.forEach((el, i) => {
@@ -217,7 +239,15 @@ buyNow.forEach((el, i) => {
                             text: message,
                             parse_mode: "HTML"
                         })
-                    });
+                    })
+                    .then((res)=> {
+                        if(res.ok) {
+                            console.log(true)
+                            orderInp.classList.remove('order-inp-active')
+                            modalBuyNow.style.display = 'none'
+                            notiFunc()
+                        }
+                    })
                 });
 
             }

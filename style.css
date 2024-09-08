@@ -329,3 +329,66 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.success-noti {
+    width: 280px;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgb(192, 161, 4);
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    animation:  noti-anim .5s forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes noti-anim {
+    from {
+        transform: translate(-50%, -70%);
+    }
+    to {
+       transform: translate(-50%, -50%);
+    }
+}
+
+.success-noti-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.35);
+    display: none;
+}
+
+.close-delivery-btn {
+    width: 100%;
+    border: 1px solid rgb(192, 161, 4);
+    background: rgb(192, 51, 4);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.success-btns-wrp {
+    width: 100%;
+}
+
+.check-delivery-btn {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background: rgb(192, 161, 4);
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
