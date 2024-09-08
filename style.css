@@ -316,3 +316,16 @@ main {
 .plc-ord-wrp {
     margin: 20px;
 }
+
+.order-product-quantity {
+    margin-top: 10px;
+}
+
+.order-product-quantity button {
+    padding: 2px 12px;
+    background: rgb(192, 161, 4);
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}

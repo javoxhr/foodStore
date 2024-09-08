@@ -137,22 +137,59 @@ buyNow.forEach((el, i) => {
         modalBuyNow.style.display = 'block'
         products.forEach((p, pi) => {
             if (pi == i) {
+                let quan = 1
                 order = p
                 orderWrp.innerHTML = `
                 <div class="order-product">
                  <img class="order-product-img" src="${p.image}" alt="">
-                 <span>${p.title}</span>
-                 <span>$${p.price}</span>
+                 <div class="order-text-and-btns-wrp">
+                  <div class="order-product-text-wrap">
+                    <span>${p.title}</span>
+                    <span>$${p.price}</span>
+                  </div>
+                  <div class="order-product-quantity">
+                   <button id="rem-quan">-</button>
+                   <span id="quan-text-content">${quan}</span>
+                   <button id="add-quan">+</button>
+                  </div>
+                 </div>
                 </div>
                 `
+                const addQuantity = document.querySelectorAll('#add-quan')
+                const remQuantity = document.querySelectorAll('#rem-quan')
+                const quanText = document.querySelectorAll('#quan-text-content')
+
+                addQuantity.forEach((ad, adI)=> {
+                    ad.addEventListener('click', ()=> {
+                        if(quan < 10) {
+                            quan ++
+                        }
+                        quanText.forEach((tx, txi)=> {
+                            tx.textContent = quan
+                        })
+
+                    })
+                })
+
+                remQuantity.forEach((rm, rmI)=> {
+                    rm.addEventListener('click', ()=> {
+                        if(quan > 0) {
+                            quan --
+                        }
+                        quanText.forEach((qt, qti)=> {
+                            qt.textContent = quan
+                        })
+                    })
+                })
+
                 sendFormTg.addEventListener('submit', (e) => {
                     e.preventDefault();
 
                     const productTitle = p.title
                     const productPrice = p.price
-                    
+
                     const form = e.target;
-                
+
                     const name = form.querySelector('[name="name"]').value;
                     const tel = form.querySelector('[name="tel"]').value;
                     const address = form.querySelector('[name="address"]').value;
@@ -161,14 +198,15 @@ buyNow.forEach((el, i) => {
                         alert('Пожалуйста, заполните все поля.');
                         return;
                     }
-                
+
                     let message = `<b>Новый заказ 🚚</b>\n`;
                     message += `<b>Имя покупателя: </b> ${name}\n`;
                     message += `<b>Телефон: </b> ${tel}\n`;
                     message += `<b>Адрес: </b> ${address}\n`;
                     message += `<b>${productTitle}</b>\n`
-                    message += `<b>Итого оплата: ${''} ${productPrice + '$'}</b>`
-                
+                    message += `<b>Штук: ${quan}</b>\n`
+                    message += `<b>Итого оплата: ${''} ${productPrice + '$'}</b>\n`
+
                     fetch(URL_API, {
                         method: "POST",
                         headers: {
@@ -181,7 +219,7 @@ buyNow.forEach((el, i) => {
                         })
                     });
                 });
-                
+
             }
         })
     })
@@ -191,10 +229,10 @@ closeOrder.addEventListener('click', () => {
     modalBuyNow.style.display = 'none'
 })
 
-orderPlacBtn.addEventListener('click', ()=> {
+orderPlacBtn.addEventListener('click', () => {
     orderInp.classList.add('order-inp-active')
 })
 
-orderPlacCloseBtn.addEventListener('click', ()=> {
+orderPlacCloseBtn.addEventListener('click', () => {
     orderInp.classList.remove('order-inp-active')
 })
