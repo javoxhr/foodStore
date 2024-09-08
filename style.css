@@ -413,6 +413,7 @@ main {
 
 .user-box {
     width: 100%;
+    max-width: 100px;
     padding: 10px;
     margin: 0 0 25px;
     border-radius: 10px;
@@ -420,4 +421,10 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.app-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
