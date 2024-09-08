@@ -1,3 +1,38 @@
+const userName = document.querySelector('#tg-user-name')
+
+window.addEventListener('load', function() {
+    // Убедитесь, что Web App API загружен и доступен
+    if (window.Telegram && window.Telegram.WebApp) {
+        window.Telegram.WebApp.ready();
+
+        // Получение данных о пользователе
+        const user = window.Telegram.WebApp.initDataUnsafe.user;
+
+        // Проверка наличия данных о пользователе
+        if (user) {
+            const userName = user.username || 'No username'; // Имя пользователя (если есть)
+            const firstName = user.first_name || 'No first name'; // Имя
+            const lastName = user.last_name || 'No last name'; // Фамилия (если есть)
+            userName.textContent = firstName ? firstName : 'user-name not'
+
+            console.log('Username:', userName);
+            console.log('First Name:', firstName);
+            console.log('Last Name:', lastName);
+        } else {
+            console.log('User data is not available');
+        }
+    } else {
+        console.log('Telegram WebApp is not available');
+    }
+});
+
+
+
+
+
+
+
+
 const TOKEN = "7547473380:AAHY6d_QFWqD1vMiiwoEz4ta_9GQkT1WmUc"
 const CHANNELID = "-1002253875776"
 const URL_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`
@@ -146,7 +181,6 @@ function closeNotiFunc() {
     successNotiOverlay.style.display = 'none'
     notiSuccess.style.display = 'none'
     body.style.overflow = 'auto'
-    window.location.reload(true)
 }
 
 closeNoti.addEventListener('click', () => {
@@ -222,6 +256,11 @@ buyNow.forEach((el, i) => {
     })
 })
 
+let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []
+
+orders.forEach((el) => {
+    console.log(el)
+})
 
 sendFormTg.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -264,8 +303,11 @@ sendFormTg.addEventListener('submit', (e) => {
                 console.log(true)
                 orderInp.classList.remove('order-inp-active')
                 modalBuyNow.style.display = 'none'
+                orders.push(order)
+                console.log(orders)
                 notiFunc()
             }
+            localStorage.setItem('orders', JSON.stringify(orders))
         })
 });
 
