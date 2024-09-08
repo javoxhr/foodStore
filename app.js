@@ -22,6 +22,7 @@ const products = [
         price: 7.99,
         category: 'food',
         image: './images/burger.png',
+        quantity: 1,
         id: 1
     },
     {
@@ -29,12 +30,14 @@ const products = [
         price: 8.39,
         category: 'food',
         image: './images/checken.png',
+        quantity: 1,
         id: 2
     },
     {
         title: 'Fri',
         price: 2.19,
         category: 'snek',
+        quantity: 1,
         image: './images/frii.png',
         id: 3
     },
@@ -43,6 +46,7 @@ const products = [
         category: 'food',
         price: 11.28,
         image: './images/combo.png',
+        quantity: 1,
         id: 4
     },
     {
@@ -50,6 +54,7 @@ const products = [
         category: 'food',
         price: 10.5,
         image: './images/pizza.png',
+        quantity: 1,
         id: 5
     },
     {
@@ -57,6 +62,7 @@ const products = [
         category: 'drings',
         price: 1.2,
         image: './images/cola.png',
+        quantity: 1,
         id: 6
     },
     {
@@ -64,6 +70,7 @@ const products = [
         category: 'drings',
         price: 4.6,
         image: './images/milk-choc.png',
+        quantity: 1,
         id: 7
     },
     {
@@ -71,6 +78,7 @@ const products = [
         category: 'drings',
         price: 2.1,
         image: './images/koktel.png',
+        quantity: 1,
         id: 8
     },
     {
@@ -78,6 +86,7 @@ const products = [
         category: 'candy',
         price: 2.8,
         image: './images/chocolate.png',
+        quantity: 1,
         id: 9
     },
     {
@@ -85,6 +94,7 @@ const products = [
         category: 'candy',
         price: 3.1,
         image: './images/chocolate2.png',
+        quantity: 1,
         id: 10
     }
 ]

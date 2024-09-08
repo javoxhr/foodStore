@@ -153,12 +153,25 @@ main {
 }
 
 .close-order {
-    border: none;
-    background: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    width: 100%;
+    border: 1px solid rgb(192, 161, 4);
+    background: rgb(192, 51, 4);
+    color: #fff;
     cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.order-buy-now .container {
+    padding: 0;
+}
+
+.close-order:active {
+    opacity: 0.8;
+}
+
+.cls-ord-wrp {
+    margin: 20px;
 }
 
 .order-product-img {
@@ -166,7 +179,7 @@ main {
 }
 
 .order-wrapper {
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 0 20px
 }
 
@@ -244,6 +257,10 @@ main {
     width: 100%;
     padding: 10px;
     border-radius: 10px;
+    border: 1px solid rgb(192, 161, 4);
+    cursor: pointer;
+    color: #fff;
+    background: rgb(192, 161, 4);
 }
 
 #close-cart {
@@ -266,8 +283,21 @@ main {
 .order-inputs {
     position: fixed;
     top: 0;
-    left: 0;
+    right: -100%;
     width: 100%;
     height: 100%;
     background: #000;
+}
+
+.place-order-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(192, 161, 4);
+    background: rgb(192, 161, 4);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.plc-ord-wrp {
+    margin: 20px;
 }
