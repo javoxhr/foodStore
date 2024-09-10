@@ -300,30 +300,15 @@ orderPlacCloseBtn.addEventListener('click', () => {
 })
 
 
-Telegram.WebApp.ready();
+Telegram.WebApp.onEvent("mainButtonCliked", function() {
+    tg.sendData(item)
+})
 
-// Функция для обработки кнопки
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
-    // Отправка данных (например, item)
-    tg.sendData(item);
-    
-    // Запрос номера телефона
-    Telegram.WebApp.openTelegramContactPicker().then(function(contact) {
-        if (contact) {
-            let phoneNumber = contact.phone_number;
-            // Добавление номера телефона в элемент
-            let phoneElement = document.createElement('p');
-            phoneElement.innerText = `Телефон: ${phoneNumber}`;
-            userCard.appendChild(phoneElement);
-        }
-    }).catch(function(error) {
-        console.error('Ошибка при запросе контакта:', error);
-    });
-});
+let userCard = document.querySelector('.user-box')
 
-// Пример добавления данных пользователя
-let userCard = document.querySelector('.user-box');
+let p = document.createElement('p')
 
-let p = document.createElement('p');
-p.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name}`;
-userCard.appendChild(p);
+p.innerText = `${tg.initDataUnsafe.user.first_name}
+${tg.initDataUnsafe.user.last_name}`
+
+userCard.appendChild(p)
