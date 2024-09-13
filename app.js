@@ -7,6 +7,14 @@ tg.MainButton.color = "#2cab37"
 
 let item = ""
 
+// Пример инициализации Telegram Web Apps API
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.Telegram && window.Telegram.WebApp) {
+        // Настройка цвета верхней панели
+        window.Telegram.WebApp.setBackgroundColor('red'); // Установите желаемый цвет
+    }
+});
+
 
 const TOKEN = "7547473380:AAHY6d_QFWqD1vMiiwoEz4ta_9GQkT1WmUc"
 const CHANNELID = "-1002253875776"
