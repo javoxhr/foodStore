@@ -7,13 +7,7 @@ tg.MainButton.color = "#2cab37"
 
 let item = ""
 
-// Пример инициализации Telegram Web Apps API
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.Telegram && window.Telegram.WebApp) {
-        // Настройка цвета верхней панели
-        window.Telegram.WebApp.setBackgroundColor('red'); // Установите желаемый цвет
-    }
-});
+const bodyy = document.querySelector('body')
 
 
 const TOKEN = "7547473380:AAHY6d_QFWqD1vMiiwoEz4ta_9GQkT1WmUc"
@@ -241,9 +235,39 @@ buyNow.forEach((el, i) => {
 })
 
 let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []
+const orderItemsWrp = document.querySelector('.orders-items-wrapper')
 
 orders.forEach((el) => {
     console.log(el)
+    orderItemsWrp.innerHTML += `
+    <div class="order-item">
+     <img src="${el.img}">
+     <img class="check-icon" src="./images/check.svg">
+     <div class="order-item-txt-wrapper">
+         <span>productName: ${el.title}</span>
+         <span>price: ${el.price + '$'}</span>
+         <span>yourName: ${el.name}</span>
+         <span>phoneNumber: ${el.tel}</span>
+         <span>address: ${el.address}</span>
+         <span class="order-date">date: ${el.date}</span>
+     </div>
+     <button class="support-btn">Support</button>
+    </div>
+    `
+})
+
+const orderss = document.querySelector('.orders')
+const myOrdersBtn = document.querySelector('.my-orders-btn')
+const backInOrders = document.querySelector('#back-in-orders')
+
+myOrdersBtn.addEventListener('click', ()=> {
+    orderss.classList.add('orders-active')
+    bodyy.style.overflow = 'hidden'
+})
+
+backInOrders.addEventListener('click', ()=> {
+    orderss.classList.remove('orders-active')
+    bodyy.style.overflow = 'auto'
 })
 
 sendFormTg.addEventListener('submit', (e) => {
@@ -286,8 +310,18 @@ sendFormTg.addEventListener('submit', (e) => {
             if (res.ok) {
                 console.log(true)
                 orderInp.classList.remove('order-inp-active')
+                let date = Date()
+                let item = {
+                    title: order.title,
+                    price: order.price,
+                    img: order.image,
+                    address: address,
+                    tel: tel,
+                    name: name,
+                    date: date,
+                }
                 modalBuyNow.style.display = 'none'
-                orders.push(order)
+                orders.push(item)
                 console.log(orders)
                 notiFunc()
             }

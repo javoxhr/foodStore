@@ -100,7 +100,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0 30px;
+    padding: 0 0 13px;
 }
 
 .top-left button {
@@ -435,4 +435,118 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.my-orders-btn {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid rgb(192, 161, 4);
+    color: #fff;
+    background: #000;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.my-orders-btn img {
+    width: 30px;
+}
+
+.my-orders-btn-wrp {
+    padding: 10px 0 20px;
+}
+
+.orders {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    transition: all .3s ease;
+}
+
+.orders-active {
+    right: 0;
+}
+
+.order-item {
+    width: 100%;
+    max-width: 330px;
+    border: 2px solid rgb(192, 161, 4);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.order-item img {
+    width: 100px;
+}
+
+.order-item span {
+    display: block;
+}
+
+.order-item-txt-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.order-date {
+    width: 295px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.support-btn {
+    width: 100%;
+    padding: 8px;
+    background: rgb(192, 161, 4);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.orders-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.orders-header button {
+    padding: 5px 15px;
+    border-radius: 3px;
+    color: #fff;
+    background: rgb(192, 161, 4);
+    border: none;
+    cursor: pointer;
+}
+
+.check-icon {
+    position: absolute;
+    right: 50px;
+    top: 45px;
+    width: 70px;
+    height: 70px;
+}
+
+.orders-items-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow: auto;
+}
+
+.orders-items-wrapper::-webkit-scrollbar {
+    display: none;
 }
