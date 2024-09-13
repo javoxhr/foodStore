@@ -543,7 +543,6 @@ main {
 .orders-items-wrapper {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
     gap: 20px;
     overflow: auto;
 }

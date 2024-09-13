@@ -241,30 +241,38 @@ const ordersNotIcon = document.querySelector('.not-icon')
 
 
 
-orders.forEach((el) => {
-    console.log(el)
-    orderItemsWrp.innerHTML += `
-    <div class="order-item">
-     <img src="${el.img}">
-     <img class="check-icon" src="./images/check.svg">
-     <div class="order-item-txt-wrapper">
-         <span>productName: ${el.title}</span>
-         <span>price: ${el.price + '$'}</span>
-         <span>yourName: ${el.name}</span>
-         <span>phoneNumber: ${el.tel}</span>
-         <span>address: ${el.address}</span>
-         <span class="order-date">date: ${el.date}</span>
-     </div>
-     <button class="support-btn">Support</button>
-    </div>
-    `
-})
-
-if(orders.length) {
-    ordersNotIcon.style.display = 'none'
-} else {
-    ordersNotIcon.style.display = 'flex'
+function ordersContent() {
+    orders.forEach((el) => {
+        console.log(el)
+        orderItemsWrp.innerHTML += `
+        <div class="order-item">
+         <img src="${el.img}">
+         <img class="check-icon" src="./images/check.svg">
+         <div class="order-item-txt-wrapper">
+             <span>productName: ${el.title}</span>
+             <span>price: ${el.price + '$'}</span>
+             <span>yourName: ${el.name}</span>
+             <span>phoneNumber: ${el.tel}</span>
+             <span>address: ${el.address}</span>
+             <span class="order-date">date: ${el.date}</span>
+         </div>
+         <button class="support-btn">Support</button>
+        </div>
+        `
+    })
 }
+
+ordersContent()
+
+function notContentFunc() {
+    if (orders.length) {
+        ordersNotIcon.style.display = 'none'
+    } else {
+        ordersNotIcon.style.display = 'flex'
+    }
+}
+
+notContentFunc()
 
 function clearFunc() {
     orderItemsWrp.innerHTML = ""
@@ -274,20 +282,27 @@ function clearFunc() {
 
 const clearOrders = document.querySelector('.clear-orders-btn')
 
-clearOrders.addEventListener('click', ()=> {
+clearOrders.addEventListener('click', () => {
     clearFunc()
 })
 
 const orderss = document.querySelector('.orders')
 const myOrdersBtn = document.querySelector('.my-orders-btn')
 const backInOrders = document.querySelector('#back-in-orders')
+const checkOrders = document.querySelector('#check-btn-nt')
 
-myOrdersBtn.addEventListener('click', ()=> {
+myOrdersBtn.addEventListener('click', () => {
     orderss.classList.add('orders-active')
     bodyy.style.overflow = 'hidden'
 })
 
-backInOrders.addEventListener('click', ()=> {
+checkOrders.addEventListener('click', () => {
+    orderss.classList.add('orders-active')
+    bodyy.style.overflow = 'hidden'
+    closeNotiFunc()
+})
+
+backInOrders.addEventListener('click', () => {
     orderss.classList.remove('orders-active')
     bodyy.style.overflow = 'auto'
 })
@@ -346,6 +361,8 @@ sendFormTg.addEventListener('submit', (e) => {
                 orders.push(item)
                 console.log(orders)
                 notiFunc()
+                ordersContent()
+                notContentFunc()
             }
             localStorage.setItem('orders', JSON.stringify(orders))
         })
@@ -364,7 +381,7 @@ orderPlacCloseBtn.addEventListener('click', () => {
 })
 
 
-Telegram.WebApp.onEvent("mainButtonCliked", function() {
+Telegram.WebApp.onEvent("mainButtonCliked", function () {
     tg.sendData(item)
 })
 
