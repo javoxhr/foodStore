@@ -543,8 +543,33 @@ main {
 .orders-items-wrapper {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
     gap: 20px;
     overflow: auto;
+}
+
+.clear-orders-btn {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid rgb(192, 161, 4);
+    background: rgb(192, 51, 4);
+    color: #fff;
+}
+
+.not-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+.not-icon img {
+    width: 80px;
+    margin-left: 8px;
 }
 
 .orders-items-wrapper::-webkit-scrollbar {

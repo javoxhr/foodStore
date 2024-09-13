@@ -237,6 +237,10 @@ buyNow.forEach((el, i) => {
 let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []
 const orderItemsWrp = document.querySelector('.orders-items-wrapper')
 
+const ordersNotIcon = document.querySelector('.not-icon')
+
+
+
 orders.forEach((el) => {
     console.log(el)
     orderItemsWrp.innerHTML += `
@@ -254,6 +258,24 @@ orders.forEach((el) => {
      <button class="support-btn">Support</button>
     </div>
     `
+})
+
+if(orders.length) {
+    ordersNotIcon.style.display = 'none'
+} else {
+    ordersNotIcon.style.display = 'flex'
+}
+
+function clearFunc() {
+    orderItemsWrp.innerHTML = ""
+    localStorage.removeItem('orders')
+    window.location.reload(true)
+}
+
+const clearOrders = document.querySelector('.clear-orders-btn')
+
+clearOrders.addEventListener('click', ()=> {
+    clearFunc()
 })
 
 const orderss = document.querySelector('.orders')
