@@ -13,6 +13,48 @@ const bodyy = document.querySelector('body')
 const TOKEN = "7547473380:AAHY6d_QFWqD1vMiiwoEz4ta_9GQkT1WmUc"
 const CHANNELID = "-1002253875776"
 const URL_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+const userId = 'USER_ID'; 
+
+async function getUserProfilePhotos() {
+    try {
+      // Получаем фотографии профиля пользователя
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/getUserProfilePhotos?user_id=${userId}`);
+      const data = await response.json();
+      
+      if (data.ok) {
+        const photos = data.result.photos;
+        if (photos.length > 0) {
+          // Получаем ID первой фотографии
+          const photoFileId = photos[0][0].file_id;
+          
+          // Получаем путь к файлу
+          const fileResponse = await fetch(`https://api.telegram.org/bot${botToken}/getFile?file_id=${photoFileId}`);
+          const fileData = await fileResponse.json();
+          
+          if (fileData.ok) {
+            const filePath = fileData.result.file_path;
+            return `https://api.telegram.org/file/bot${botToken}/${filePath}`;
+          }
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching user profile photos:', error);
+      return null;
+    }
+  }
+  
+  // Пример использования
+  getUserProfilePhotos().then(avatarUrl => {
+    if (avatarUrl) {
+      // Создаем элемент изображения и добавляем его на страницу
+      const img = document.createElement('img');
+      img.src = avatarUrl;
+      userCard.appendChild(img);
+    } else {
+      console.log('No profile photo found or error occurred.');
+    }
+  });
 
 const sendFormTg = document.querySelector('#send-message-tg')
 
@@ -361,7 +403,6 @@ sendFormTg.addEventListener('submit', (e) => {
                 orders.push(item)
                 console.log(orders)
                 notiFunc()
-                ordersContent()
                 notContentFunc()
             }
             localStorage.setItem('orders', JSON.stringify(orders))
