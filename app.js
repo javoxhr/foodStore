@@ -394,3 +394,12 @@ p.innerText = `${tg.initDataUnsafe.user.first_name}
 ${tg.initDataUnsafe.user.last_name}`
 
 userCard.appendChild(p)
+
+const userProfilName = document.querySelector('#user-name-pr')
+const userProfilLastName = document.querySelector('#user-name-pr')
+const userProfilNameAvatar = document.querySelector('.user-avatar')
+
+
+userProfilName.textContent = `${tg.initDataUnsafe.user.first_name}`
+userProfilLastName.textContent = `${tg.initDataUnsafe.user.last_name}`
+userProfilNameAvatar.textContent = `${tg.initDataUnsafe.user.first_name}`
