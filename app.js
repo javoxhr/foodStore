@@ -402,4 +402,4 @@ const userProfilNameAvatar = document.querySelector('.user-avatar')
 
 userProfilName.textContent = `${tg.initDataUnsafe.user.first_name}`
 userProfilLastName.textContent = `${tg.initDataUnsafe.user.last_name}`
-userProfilNameAvatar.textContent = `${tg.initDataUnsafe.user.first_name}`
+// userProfilNameAvatar.textContent = `${tg.initDataUnsafe.user.first_name}`
