@@ -396,7 +396,7 @@ ${tg.initDataUnsafe.user.last_name}`
 userCard.appendChild(p)
 
 const userProfilName = document.querySelector('#user-name-pr')
-const userProfilLastName = document.querySelector('#user-name-pr')
+const userProfilLastName = document.querySelector('#user-last-name-pr')
 const userProfilNameAvatar = document.querySelector('.user-avatar')
 
 
