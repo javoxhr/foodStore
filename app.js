@@ -399,7 +399,11 @@ const userProfilName = document.querySelector('#user-name-pr')
 const userProfilLastName = document.querySelector('#user-last-name-pr')
 const userProfilNameAvatar = document.querySelector('.user-avatar')
 
+let ava = tg.initDataUnsafe.user.first_name
+
+let trimmedName = ava.slice(0, 2);
+
 
 userProfilName.textContent = `${tg.initDataUnsafe.user.first_name}`
 userProfilLastName.textContent = `${tg.initDataUnsafe.user.last_name}`
-// userProfilNameAvatar.textContent = `${tg.initDataUnsafe.user.first_name}`
+userProfilNameAvatar.textContent = trimmedName
