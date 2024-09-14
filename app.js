@@ -386,7 +386,26 @@ Telegram.WebApp.onEvent("mainButtonCliked", function () {
     tg.sendData(item)
 })
 
+const profilModal = document.querySelector('.user-profil-inst')
+const closeModalProfil = document.querySelector('#back-btn-in-profil')
+const profilModalOverlay = document.querySelector('.user-profil-overlay-ins')
+
 let userCard = document.querySelector('.user-box')
+
+userCard.addEventListener('click', ()=> {
+    profilModal.style.display = 'block'
+    profilModalOverlay.style.display = 'block'
+})
+
+closeModalProfil.addEventListener('click', ()=> {
+    profilModal.style.display = 'none'
+    profilModalOverlay.style.display = 'none'
+})
+
+profilModalOverlay.addEventListener('click', ()=> {
+    profilModal.style.display = 'none'
+    profilModalOverlay.style.display = 'none'
+})
 
 let p = document.createElement('p')
 

@@ -586,6 +586,17 @@ main {
     left: 50%;
     z-index: 10;
     transform: translate(-50%, -50%);
+    animation: prof-animm .3s forwards;
+    display: none;
+}
+
+@keyframes prof-animm {
+    from {
+      transform: translate(-50%, -30%);
+    }
+    to {
+      transform: translate(-50%, -50%);
+    }
 }
 
 .user-avatar {
@@ -630,4 +641,5 @@ main {
     height: 100%;
     z-index: 2;
     background: rgba(0, 0, 0, 0.35);
+    display: none;
 }
