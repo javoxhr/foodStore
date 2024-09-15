@@ -577,7 +577,7 @@ main {
 
 .user-profil-inst {
     width: 300px;
-    height: 200px;
+    height: 250px;
     border: 2px solid rgb(192, 161, 4);
     background: #000;
     border-radius: 20px;
@@ -641,5 +641,94 @@ main {
     height: 100%;
     z-index: 2;
     background: rgba(0, 0, 0, 0.35);
+    display: none;
+}
+
+.messages-clients-delivery {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fff;
+    display: block;
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.dashboard-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.35);
+    display: none;
+}
+
+#trueBtn {
+    display: none;
+    border: 2px solid greenyellow;
+}
+
+.user-prof-back-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard {
+    width: 300px;
+    height: 200px;
+    background: #000;
+    border: 1px solid rgb(192, 161, 4);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+#auth {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background: #000;
+    border: 1px solid rgb(192, 161, 4);
+    outline: none;
+    margin-top: 15px;
+    color: #fff;
+}
+
+#falseBtn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fff;
+    display: block;
+    list-style: none;
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#success-auth {
+    color: greenyellow;
+    margin-top: 5px;
+    display: none;
+}
+
+#error-auth {
+    color: rgb(249, 27, 27);
+    margin-top: 5px;
     display: none;
 }

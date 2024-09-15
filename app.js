@@ -392,19 +392,59 @@ const profilModalOverlay = document.querySelector('.user-profil-overlay-ins')
 
 let userCard = document.querySelector('.user-box')
 
-userCard.addEventListener('click', ()=> {
+userCard.addEventListener('click', () => {
     profilModal.style.display = 'block'
     profilModalOverlay.style.display = 'block'
 })
 
-closeModalProfil.addEventListener('click', ()=> {
+closeModalProfil.addEventListener('click', () => {
     profilModal.style.display = 'none'
     profilModalOverlay.style.display = 'none'
 })
 
-profilModalOverlay.addEventListener('click', ()=> {
+profilModalOverlay.addEventListener('click', () => {
     profilModal.style.display = 'none'
     profilModalOverlay.style.display = 'none'
+})
+
+const authInput = document.querySelector('#auth')
+const authTrueBtn = document.querySelector('#trueBtn')
+const authFalseBtn = document.querySelector('#falseBtn')
+const authForm = document.querySelector('#authForm')
+const authSuccess = document.querySelector('#success-auth')
+const authError = document.querySelector('#error-auth')
+const authBtn = document.querySelector('#auth-btn')
+const overlayDash = document.querySelector('.dashboard-modal-overlay')
+const dashboard = document.querySelector('.dashboard')
+
+authBtn.addEventListener('click', () => {
+    dashboard.style.display = 'block'
+    overlayDash.style.display = 'block'
+    profilModal.style.display = 'none'
+    profilModalOverlay.style.display = 'none'
+})
+
+overlayDash.addEventListener('click', () => {
+    dashboard.style.display = 'none'
+    overlayDash.style.display = 'none'
+})
+
+authForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    if (authInput.value == 'Java2oo8') {
+        authTrueBtn.style.display = 'block'
+        authFalseBtn.style.display = 'none'
+        authSuccess.style.display = 'block'
+        authError.style.display = 'none'
+    } else {
+        authTrueBtn.style.display = 'none'
+        authFalseBtn.style.display = 'block'
+        authSuccess.style.display = 'none'
+        authError.style.display = 'block'
+        setTimeout(() => {
+            authError.style.display = 'none'
+        }, 3000)
+    }
 })
 
 let p = document.createElement('p')

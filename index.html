@@ -10,6 +10,17 @@
 
 <body>
     <main>
+        <div class="dashboard-modal-overlay"></div>
+        <div class="dashboard">
+            <h2>Authorization</h2>
+            <form id="authForm">
+                <input id="auth" type="text">
+                <span id="success-auth">success</span>
+                <span id="error-auth">error</span>
+                <a id="trueBtn" href="https://t.me/s/fastfoodchanel" class="messages-clients-delivery">Open</a>
+                <button id="falseBtn" class="messages-clients-delivery">Send password</button>
+            </form>
+        </div>
         <div class="user-profil-overlay-ins"></div>
         <div class="user-profil-inst">
             <div class="avatar-wrp">
@@ -20,6 +31,7 @@
                 </div>
             </div>
             <div class="user-prof-back-btn">
+                <button id="auth-btn">Authorization</button>
                 <button id="back-btn-in-profil">Back</button>
             </div>
         </div>
